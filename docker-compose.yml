@@ -1,0 +1,14 @@
+version: '3'
+services:
+ web:
+   image: nginx:alpine
+   backend:
+    # container_name: taskapp
+    image: harshavarthini28/acc-backend
+    ports:
+      - "8081:8081"
+   frontend:
+    # container_name: taskapp
+    image: harshavarthini28/acc-frontend
+    ports:
+      - "3000:3000"
