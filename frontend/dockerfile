@@ -1,0 +1,24 @@
+FROM node:20
+# Set the working directory inside the container
+WORKDIR /task-app
+
+# Copy package.json and package-lock.json to the container
+COPY package*.json ./
+
+
+# Install frontend dependencies
+RUN npm install
+
+# Copy the rest of the frontend source code
+COPY . .
+
+# Build the frontend application
+RUN npm run build
+
+# Expose the port your frontend will be served on
+EXPOSE 3000
+
+# Command to start a simple server for serving the built frontend
+
+CMD [ "npx","serve","-s","build","-l","3000" ]
+
